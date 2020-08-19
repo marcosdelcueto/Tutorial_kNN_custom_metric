@@ -26,12 +26,13 @@ def mimic_minkowski(X1,X2):
 
 ### Function just used to test custom metrics ###
 def custom_metric(X1,X2):
-    diff=0.0
-    for i in range(len(X1)):
-        diff=diff+(X1[i]-X2[i])**2
-    diff=diff**(1.0/2.0)
+    #diff=0.0
+    #for i in range(len(X1)):
+        #diff=diff+(X1[i]-X2[i])**2
+    #diff=diff**(1.0/2.0)
     #print('diff:', diff)
     #print('##################')
+    diff = X1[0]-X2[0]
     diff = 360/365*diff
     diff = diff * math.pi/180
     distance = sqrt(150e6*(1-math.cos(diff)))
@@ -60,9 +61,9 @@ y.reshape(-1, 1)
 
 for k in Neighbors:
     print('NEW NEIGHBOR',k)
-    #ML_algorithm = KNeighborsRegressor(n_neighbors=k, weights='distance')
+    ML_algorithm = KNeighborsRegressor(n_neighbors=k, weights='distance')
     #ML_algorithm = KNeighborsRegressor(n_neighbors=k, weights='distance', metric=mimic_minkowski)
-    ML_algorithm = KNeighborsRegressor(n_neighbors=k, weights='distance', metric=custom_metric)
+    #ML_algorithm = KNeighborsRegressor(n_neighbors=k, weights='distance', metric=custom_metric)
     y_predicted=[]
     y_real=[]
     kf = KFold(n_splits=kfold,shuffle=True)
