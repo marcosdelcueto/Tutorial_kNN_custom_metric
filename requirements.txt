@@ -1,0 +1,2 @@
+###### Requirements with versions tested with Python 3.8.5 ######`
+pandas == 1.1.1
